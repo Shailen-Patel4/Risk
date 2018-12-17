@@ -25,3 +25,4 @@ while end == 0:
     defender = player(players[int(input("Defender: "))-1], int(input("Units: ")))
 
     end == int(input("End? "))
+# what else to add?
