@@ -19,6 +19,13 @@ def rolldice(attacker, defender):
     attacker_dice.sort(reverse=True)
     for i in range(0, len(attacker_dice)):
         determinator.append(attacker_dice[i]-defender_dice[i])
+    for i in range(0, len(attacker_dice)):
+        if defender_dice[i] > 0 and determinator[i] > 0:
+            print('Attacker wins')
+        if defender_dice[i] > 0 and determinator[i] < 0:
+            print('Defender wins')
+        if defender_dice[i] > 0 and determinator[i] == 0:
+            print('Defender wins')
     return attacker_dice, defender_dice, determinator
 
 [x, y, result] = rolldice(3,2)
