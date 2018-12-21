@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
 
-def rolldice(defender, attacker):
+def rolldice(attacker, defender):
     defender_dice = []
     attacker_dice = []
+    determinator = []
     for i in range(0, defender):
         x = np.random.randint(1,7)
         defender_dice.append(x)
@@ -14,26 +15,11 @@ def rolldice(defender, attacker):
         attacker_dice.append(x)
     for i in range(0,3-attacker):
         at_dice.append(0)
-    return defender_dice, attacker_dice
+    defender_dice.sort(reverse=True)
+    attacker_dice.sort(reverse=True)
+    for i in range(0, len(attacker_dice)):
+        determinator.append(attacker_dice[i]-defender_dice[i])
+    return attacker_dice, defender_dice, determinator
 
-
-# def matchingdice(defender_dice, attacker_dice):
-#     defencewins = []
-#     sorted(defender_dice, reverse = True)
-#     sorted(attacker_dice)
-#     if attacker_dice[0] < defender_dice[0]:
-#         defencewins.append(1)
-#     else:
-#         defencewins.append(0)
-#     if attacker_dice[1] < defender_dice[1]:
-#         defencewins.append(1)
-#     else:
-#         defencewins.append(0)
-#     if attacker_dice[3] < defender_dice[1]:
-
-[x, y] = rolldice(2,3)
-print(sorted(x, reverse = True), sorted(y, reverse = True))
-# defenders_dice = for
-# sorted(y)
-# print(y)
-# print(y[0])
+[x, y, result] = rolldice(3,2)
+print(x,y, result)
